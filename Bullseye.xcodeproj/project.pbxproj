@@ -14,6 +14,7 @@
 		ABB3E6CD2943064B004B0AFF /* BullseyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3E6CC2943064B004B0AFF /* BullseyeTests.swift */; };
 		ABB3E6D72943064B004B0AFF /* BullseyeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3E6D62943064B004B0AFF /* BullseyeUITests.swift */; };
 		ABB3E6D92943064B004B0AFF /* BullseyeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB3E6D82943064B004B0AFF /* BullseyeUITestsLaunchTests.swift */; };
+		ABEB1F8D2950855400E6F71B /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEB1F8C2950855400E6F71B /* TextViews.swift */; };
 		ABFA7DBD294CE14B002F2A82 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFA7DBC294CE14B002F2A82 /* Game.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		ABB3E6D22943064B004B0AFF /* BullseyeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullseyeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB3E6D62943064B004B0AFF /* BullseyeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeUITests.swift; sourceTree = "<group>"; };
 		ABB3E6D82943064B004B0AFF /* BullseyeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ABEB1F8C2950855400E6F71B /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		ABFA7DBC294CE14B002F2A82 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB3E6BC2943064A004B0AFF /* ContentView.swift */,
+				ABEB1F8C2950855400E6F71B /* TextViews.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABB3E6BD2943064A004B0AFF /* ContentView.swift in Sources */,
+				ABEB1F8D2950855400E6F71B /* TextViews.swift in Sources */,
 				ABFA7DBD294CE14B002F2A82 /* Game.swift in Sources */,
 				ABB3E6BB2943064A004B0AFF /* BullseyeApp.swift in Sources */,
 			);

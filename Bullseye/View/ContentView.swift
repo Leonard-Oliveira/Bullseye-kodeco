@@ -17,13 +17,7 @@ struct ContentView: View {
         ZStack {
             Color("BackgroundColor")
             VStack {
-                Text("🎯Put the bullseye as close as you can to 🎯.")
-                    .bold()
-                    .kerning(2.0)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(4)
-                    .font(.footnote)
-                    .foregroundColor(Color("TextColor"))
+                InstructionText()
                 Text(String(game.target))
                     .kerning(-1.0)
                     .font(.largeTitle)
