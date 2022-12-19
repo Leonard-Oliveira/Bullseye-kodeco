@@ -13,16 +13,12 @@ struct ContentView: View {
     @State private var sliderValue = 50.0
     @State private var game = Game()
     
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
             VStack {
-                InstructionText()
-                Text(String(game.target))
-                    .kerning(-1.0)
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundColor(Color("TextColor"))
+                InstructionsView(game: $game)
                 HStack {
                     Text("1")
                         .bold()
@@ -32,7 +28,7 @@ struct ContentView: View {
                         .bold()
                         .foregroundColor(Color("TextColor"))
                 }
-                Button(action: {
+                Button(action: {  // ExtractView A
                     self.alertIsVisible = true
                 }) {
                     Text("Hit Me".uppercased())
@@ -48,11 +44,24 @@ struct ContentView: View {
                     )
                     .foregroundColor(.white)
                     .cornerRadius(21)
-                    .alert(isPresented: $alertIsVisible, content: {
+                    .alert(isPresented: $alertIsVisible, content: { //ExtractView
                         let roundedValue = Int(sliderValue.rounded())
                         return Alert(title: Text("hello there!"), message: Text("The slider value is: \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!!")))
-                })
+                }) // fim - Extract View A
             }
+        }
+    }
+}
+
+struct InstructionsView: View {
+    @Binding var game: Game
+    
+    var body: some View {
+        VStack {
+            InstructionText(text: "🎯🎯🎯\nPut the bullseye as close as you can to.")
+                .padding(.leading, 30.0)
+                .padding(.trailing, 30.0)
+            BigNumberText(text: String(game.target))
         }
     }
 }

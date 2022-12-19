@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct InstructionText: View {
+    var text: String
+    
     var body: some View {
-        Text("🎯🎯🎯\nPut the bullseye as close as you can to.".uppercased())
+        Text(text.uppercased())
             .bold()
             .kerning(2.0)
             .multilineTextAlignment(.center)
@@ -19,8 +21,24 @@ struct InstructionText: View {
     }
 }
 
+struct BigNumberText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .kerning(-1.0)
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .foregroundColor(Color("TextColor"))
+    }
+}
+
 struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionText()
+        VStack {
+            InstructionText(text: "Instructions")
+            
+            BigNumberText(text: "999")
+        }
     }
 }
