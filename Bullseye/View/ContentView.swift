@@ -9,10 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private  var alertIsVisible = false
+    @State private var alertIsVisible = false
     @State private var sliderValue = 50.0
     @State private var game = Game()
-    
     
     var body: some View {
         ZStack {
@@ -20,40 +19,18 @@ struct ContentView: View {
             VStack {
                 InstructionsView(game: $game)
                 HStack {
-                    Text("1")
-                        .bold()
-                        .foregroundColor(Color("TextColor"))
-                    Slider(value: $sliderValue, in: 1.0...100.0)
-                    Text("100")
-                        .bold()
-                        .foregroundColor(Color("TextColor"))
+                    SliderLabelText(text: "1")
+                    SliderView(sliderValue: $sliderValue)
+                    SliderLabelText(text: "100")
                 }
-                Button(action: {  // ExtractView A
-                    self.alertIsVisible = true
-                }) {
-                    Text("Hit Me".uppercased())
-                        .bold()
-                        .font(.title3)
-                }
-                    .padding(20)
-                    .background(
-                        ZStack {
-                            Color("ButtonColor")
-                            LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
-                        }
-                    )
-                    .foregroundColor(.white)
-                    .cornerRadius(21)
-                    .alert(isPresented: $alertIsVisible, content: { //ExtractView
-                        let roundedValue = Int(sliderValue.rounded())
-                        return Alert(title: Text("hello there!"), message: Text("The slider value is: \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!!")))
-                }) // fim - Extract View A
+                HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
             }
         }
     }
 }
 
 struct InstructionsView: View {
+    
     @Binding var game: Game
     
     var body: some View {
@@ -63,6 +40,44 @@ struct InstructionsView: View {
                 .padding(.trailing, 30.0)
             BigNumberText(text: String(game.target))
         }
+    }
+}
+
+struct SliderView: View {
+    
+    @Binding var sliderValue: Double
+    
+    var body: some View {
+        Slider(value: $sliderValue, in: 1.0...100.0)
+    }
+}
+
+struct HitMeButton: View {
+    @Binding var alertIsVisible: Bool
+    @Binding var sliderValue: Double
+    @Binding var game: Game
+    
+    var body: some View {
+        Button(action: {
+            self.alertIsVisible = true
+        }) {
+            Text("Hit Me".uppercased())
+                .bold()
+                .font(.title3)
+        }
+        .padding(20)
+        .background(
+            ZStack {
+                Color("ButtonColor")
+                LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]), startPoint: .top, endPoint: .bottom)
+            }
+        )
+        .foregroundColor(.white)
+        .cornerRadius(21)
+        .alert(isPresented: $alertIsVisible, content: { //ExtractView
+            let roundedValue = Int(sliderValue.rounded())
+            return Alert(title: Text("hello there!"), message: Text("The slider value is: \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!!")))
+        })
     }
 }
 
