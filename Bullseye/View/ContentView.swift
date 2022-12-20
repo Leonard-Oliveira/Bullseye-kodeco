@@ -30,7 +30,6 @@ struct ContentView: View {
 }
 
 struct InstructionsView: View {
-    
     @Binding var game: Game
     
     var body: some View {
@@ -44,7 +43,6 @@ struct InstructionsView: View {
 }
 
 struct SliderView: View {
-    
     @Binding var sliderValue: Double
     
     var body: some View {
@@ -73,7 +71,11 @@ struct HitMeButton: View {
             }
         )
         .foregroundColor(.white)
-        .cornerRadius(21)
+        .cornerRadius(21.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 21.0)
+                .strokeBorder(Color.white, lineWidth: 2.0)
+        )
         .alert(isPresented: $alertIsVisible, content: { //ExtractView
             let roundedValue = Int(sliderValue.rounded())
             return Alert(title: Text("hello there!"), message: Text("The slider value is: \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!!")))
