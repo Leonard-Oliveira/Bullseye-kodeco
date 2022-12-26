@@ -4,7 +4,6 @@
 //
 //  Created by Leonard Nucci de Oliveira on 08/12/22.
 //
-
 import SwiftUI
 
 struct ContentView: View {
@@ -58,6 +57,7 @@ struct HitMeButton: View {
     var body: some View {
         Button(action: {
             self.alertIsVisible = true
+
         }) {
             Text("Hit Me".uppercased())
                 .bold()
@@ -76,9 +76,12 @@ struct HitMeButton: View {
             RoundedRectangle(cornerRadius: 21.0)
                 .strokeBorder(Color.white, lineWidth: 2.0)
         )
-        .alert(isPresented: $alertIsVisible, content: { //ExtractView
+        .alert(isPresented: $alertIsVisible, content: {
             let roundedValue = Int(sliderValue.rounded())
-            return Alert(title: Text("hello there!"), message: Text("The slider value is: \(roundedValue).\n" + "You scored \(game.points(sliderValue: roundedValue)) points this round."), dismissButton: .default(Text("Awesome!!")))
+            let points = game.points(sliderValue: roundedValue)
+            return Alert(title: Text("hello there!"), message: Text("The slider value is: \(roundedValue).\n" + "You scored \(points) points this round."), dismissButton: .default(Text("Awesome!!")) {
+                game.startNewRound(points: points)
+            })
         })
     }
 }
