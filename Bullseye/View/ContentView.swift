@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
                 HStack {

@@ -25,11 +25,17 @@ final class BullseyeTests: XCTestCase {
         let score = game.points(sliderValue: guess)
         XCTAssertEqual(score, 95)
     }
+
+    func testScoreNegative() {
+        let guess = game.target - 5
+        let score = game.points(sliderValue: guess)
+        XCTAssertEqual(score, 95)
+    }
     
-//    func testScoreNegative() {
-//        let guess = game.target - 5
-//        let score = game.points(sliderValue: guess)
-//        XCTAssertEqual(score, 95)
-//    }
+    func testNewRound() {
+        game.startNewRound(points: 100)
+        XCTAssertEqual(game.score, 100)
+        XCTAssertEqual(game.round, 2)
+    }
     
 }
