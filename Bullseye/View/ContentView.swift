@@ -17,13 +17,10 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
-                HStack {
-                    SliderLabelText(text: "1")
-                    SliderView(sliderValue: $sliderValue)
-                    SliderLabelText(text: "100")
-                }
+                    .padding(.bottom, 100)
                 HitMeButton(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
             }
+            SliderView(sliderValue: $sliderValue)
         }
     }
 }
@@ -45,7 +42,11 @@ struct SliderView: View {
     @Binding var sliderValue: Double
     
     var body: some View {
-        Slider(value: $sliderValue, in: 1.0...100.0)
+        HStack {
+            SliderLabelText(text: "1")
+            Slider(value: $sliderValue, in: 1.0...100.0)
+            SliderLabelText(text: "100")
+        }
     }
 }
 
