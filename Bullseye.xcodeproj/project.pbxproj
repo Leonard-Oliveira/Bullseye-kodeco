@@ -117,8 +117,8 @@
 		ABFA7DB9294CDEF4002F2A82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AB4BD359296DA46000334CDE /* Constants.swift */,
 				ABFA7DBC294CE14B002F2A82 /* Game.swift */,
+				AB4BD359296DA46000334CDE /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

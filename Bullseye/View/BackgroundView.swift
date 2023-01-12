@@ -40,7 +40,7 @@ struct TopView: View {
       }) {
         RoundedImageViewFilled(systemName: "list.dash")
       }.sheet(isPresented: $leaderboardIsShowing, onDismiss: {}, content: {
-          LeaderboardView(leaderboardIsShowing: $leaderboardIsShowing)
+        LeaderboardView(leaderboardIsShowing: $leaderboardIsShowing, game: $game)
       })
     }
   }
@@ -84,7 +84,6 @@ struct RingsView: View {
           .stroke(lineWidth: 20.0)
           .fill(
             RadialGradient(gradient: Gradient(colors: [Color("RingsColor").opacity(opacity), Color("RingsColor").opacity(0)]), center: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, startRadius: 100, endRadius: 300)
-            
           )
           .frame(width: size, height: size)
       }
