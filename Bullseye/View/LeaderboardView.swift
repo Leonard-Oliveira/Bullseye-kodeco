@@ -17,10 +17,12 @@ struct LeaderboardView: View {
       VStack(spacing: 10){
         HeaderView(leaderboardIsShowing: $leaderboardIsShowing)
         LabelView()
-        VStack(spacing: 10) {
-          ForEach(game.leaderboardEntries.indices) {
-            i in let leaderboardEntry = game.leaderboardEntries[i]
-            RowView(index: i, score: leaderboardEntry.points, date: leaderboardEntry.date)
+        ScrollView {
+          VStack(spacing: 10) {
+            ForEach(game.leaderboardEntries.indices) {
+              i in let leaderboardEntry = game.leaderboardEntries[i]
+              RowView(index: i, score: leaderboardEntry.points, date: leaderboardEntry.date)
+            }
           }
         }
       }
@@ -68,6 +70,7 @@ struct LeaderboardView: View {
             BigBoldText(text: "Leaderboard")
           }
         }
+        .padding(.top)
         HStack {
           Spacer()
           Button(action: {
@@ -75,6 +78,7 @@ struct LeaderboardView: View {
           }) {
             RoundedImageViewFilled(systemName: "xmark")
               .padding(.trailing)
+              .padding(.top)
           }
         }
       }
@@ -101,7 +105,7 @@ struct LeaderboardView: View {
   
   struct LeaderboardView_Previews: PreviewProvider {
     static private var leaderboardIsShowing = Binding.constant(false)
-    static private var game = Binding.constant(Game())
+    static private var game = Binding.constant(Game(loadTestData: true))
     
     static var previews: some View {
       LeaderboardView(leaderboardIsShowing: leaderboardIsShowing, game: game)
